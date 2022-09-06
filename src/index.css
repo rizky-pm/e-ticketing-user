@@ -4,10 +4,18 @@
 
 @layer components {
   .navbar-box-shadow {
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0rem 0.1875rem 0.1875rem 0rem;
   }
 
   .input-field {
     @apply p-2 rounded-sm mb-1 outline-none focus:outline-none border border-green-800 focus:border focus:border-green-300 shadow-sm;
+  }
+
+  .th-width {
+    @apply nth-first:min-w-[4.6875rem] nth-second:min-w-[18.75rem] nth-third:min-w-[31.25rem] nth-fourth:min-w-[18.75rem] nth-fifth:min-w-[12.5rem];
+  }
+
+  .td-width {
+    @apply nth-type-first:max-w-[4.6875rem] nth-type-second:max-w-[18.75rem] nth-type-third:max-w-[31.25rem] nth-type-fourth:max-w-[18.75rem] nth-type-fifth:max-w-[12.5rem];
   }
 }
