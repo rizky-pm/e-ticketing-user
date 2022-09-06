@@ -1,13 +1,11 @@
-import FormReport from './components/FormReport';
 import Navbar from './components/Navbar';
+import Routers from './Routes';
 
 function App() {
   return (
     <>
       <Navbar />
-      <div className='font-poppins flex justify-center py-10'>
-        <FormReport />
-      </div>
+      <Routers />
     </>
   );
 }
