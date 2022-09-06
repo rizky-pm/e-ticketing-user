@@ -1,10 +1,14 @@
 import FormReport from './components/FormReport';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className='App font-poppins py-8 px-16'>
-      <FormReport />
-    </div>
+    <>
+      <Navbar />
+      <div className='font-poppins flex justify-center py-10'>
+        <FormReport />
+      </div>
+    </>
   );
 }
 

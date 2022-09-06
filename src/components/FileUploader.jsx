@@ -34,16 +34,15 @@ const FileUploader = ({
   };
 
   const handleChange = (event) => {
-    // setFileSelected(event.target.files[0]);
     const fileSelected = event.target.files[0];
+    const fileName = fileSelected.name;
 
-    const extension = fileSelected.type.replace(regex, ''); // removes '/' character with everything before it
-    console.log({ extension });
+    console.log(fileSelected);
+
+    const extension = fileName.substring(fileName.indexOf('.') + 1);
 
     if (fileSelected.size < 3000000) {
       setFile(fileSelected);
-      //   setAttachment(fileSelected);
-      console.log(attachment);
 
       setFiles({ type: type, image: fileSelected });
 
@@ -51,15 +50,15 @@ const FileUploader = ({
         if (result) {
           setBase64(result);
 
-          console.log(result);
+          setAttachment({
+            fileName: fileSelected.name,
+            extension: extension,
+            base64String: result,
+          });
+
           return result;
         }
       });
-
-      setAttachment((prevState) => ({
-        ...prevState,
-        [type]: fileSelected,
-      }));
     } else {
       // setIsSingleModalOpen(true);
       // setModalData({

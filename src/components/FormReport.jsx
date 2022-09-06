@@ -29,6 +29,8 @@ const FormReport = () => {
   const [file, setFile] = useState([]);
   const [base64, setBase64] = useState(null);
 
+  console.log(attachment);
+
   const onSubmit = async (values, actions, resetForm) => {
     actions(false);
     setLoading(true);
@@ -43,12 +45,16 @@ const FormReport = () => {
         descriptionReport: values.descriptionReport,
         date: moment().format('dddd, Do MMMM YYYY - HH:mm:ss'),
         status: 'pending',
-        attachment: base64,
+        attachment: attachment,
+        comments: [],
       })
       .then((res) => {
         resetForm();
         setLoading(false);
         console.log(res);
+        setTimeout(function () {
+          window.location.reload();
+        }, 1000);
       })
       .catch((error) => {
         resetForm();
@@ -58,8 +64,7 @@ const FormReport = () => {
   };
 
   return (
-    <div>
-      <h1 className='text-2xl font-bold'>Report Form</h1>
+    <div className='w-1/2'>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}

@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
+@layer components {
+  .navbar-box-shadow {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  }
+
   .input-field {
-    @apply p-2 rounded-sm mb-1 outline-none focus:outline-none border border-green-800 focus:border focus:border-green-300 shadow-sm
+    @apply p-2 rounded-sm mb-1 outline-none focus:outline-none border border-green-800 focus:border focus:border-green-300 shadow-sm;
   }
 }
