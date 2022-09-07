@@ -19,7 +19,7 @@ const ModalComponent = ({ open, handleClose, data }) => {
         <img
           src={data?.base64String}
           alt={data?.fileName}
-          className='w-11/12 h-auto object-contain bg-slate-200 rounded secondary-box-shadow'
+          className='w-11/12 h-auto object-contain bg-slate-200 rounded secondary-box-shadow hover:cursor-zoom-in'
           onClick={() => openImage(data.base64String)}
         />
       );
@@ -39,7 +39,7 @@ const ModalComponent = ({ open, handleClose, data }) => {
       aria-labelledby='modal-modal-title'
       aria-describedby='modal-modal-description'
     >
-      <div className='absolute top-1/2 left-1/2 w-5/6 -translate-x-1/2 -translate-y-1/2 bg-white flex flex-col items-center p-2 space-y-2 rounded primary-box-shadow'>
+      <div className='absolute top-1/2 left-1/2 w-2/6 -translate-x-1/2 -translate-y-1/2 bg-white flex flex-col items-center p-2 space-y-2 rounded primary-box-shadow'>
         <h1 className='w-full font-bold self-start block truncate'>
           {data?.fileName}
         </h1>

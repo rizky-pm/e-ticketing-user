@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { DocumentIcon } from '@heroicons/react/24/outline';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import moment from 'moment';
 import 'moment/locale/id';
-import axios from 'axios';
 import { fetchTicketDetail } from '../rtk/features/ticketDetailSlice';
 import { patchTicket } from '../rtk/features/ticketDetailSlice';
 
@@ -14,20 +13,17 @@ import CommentCard from '../components/CommentCard';
 import SnackbarComponent from '../components/SnackbarComponent';
 
 const DetailTicketPage = () => {
-  //   const [ticket, setTicket] = useState([]);
   const [comment, setComment] = useState('');
   const [snackbarData, setSnackbarData] = useState({
     isOpen: false,
     message: '',
     type: '',
   });
-  const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
   const params = useParams();
   const ticket = useSelector((state) => state.ticket);
   const dispatch = useDispatch();
-  const state = useLocation().state;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -76,32 +72,6 @@ const DetailTicketPage = () => {
     //     data: dataPayload,
     //   };
     //   dispatch(patchTicket(payload));
-    // }
-  };
-
-  const handleCloseTicket = async () => {
-    // setIsLoading(true);
-    // try {
-    //   const res = await axios({
-    //     method: 'PATCH',
-    //     url: `${API_URL}/report/${params.id}`,
-    //     data: {
-    //       status: 'closed',
-    //     },
-    //   });
-    //   setIsLoading(false);
-    //   setSnackbarData({
-    //     isOpen: true,
-    //     message: 'Success close ticket',
-    //     type: 'success',
-    //   });
-    // } catch (error) {
-    //   setIsLoading(false);
-    //   setSnackbarData({
-    //     isOpen: true,
-    //     message: 'Failed close ticket',
-    //     type: 'error',
-    //   });
     // }
   };
 
@@ -156,7 +126,7 @@ const DetailTicketPage = () => {
 
   return (
     <div className='relative py-5 lg:py-10 px-4 flex flex-col items-center'>
-      {isLoading ? (
+      {ticket.isFetching ? (
         <div className='flex justify-center items-center h-[100vh]'>
           <h1 className='font-bold text-2xl'>Loading data ...</h1>
         </div>
