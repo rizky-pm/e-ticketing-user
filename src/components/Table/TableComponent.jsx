@@ -20,7 +20,7 @@ const TableComponent = ({ tableData }) => {
 
   const navigateToDetail = (event, data) => {
     event.preventDefault();
-    console.log('Navigate');
+    navigate('/detail/' + data.id, { state: data });
   };
 
   const renderStatus = (status) => {
